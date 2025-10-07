@@ -22,6 +22,26 @@ Aplicación web en PHP 8 para integración con Mercado Pago mediante API REST us
 
 ## 🔧 Instalación
 
+### 0. Verificar que este todo listo para comenzar
+- Tener PHP 8.1 o superior instalado
+  - local: xampp 3
+  - remoto: cpanel
+- Tener Composer instalado
+  - 2.8 o superior
+- Tener una cuenta de desarrollador en Mercado Pago
+- Tener un servidor web (Apache/Nginx) o usar el servidor embebido de PHP
+- Tener acceso a la terminal o línea de comandos
+- Tener un editor de texto o IDE para editar archivos PHP
+- Tener una conexión a internet para descargar dependencias y acceder a la API de Mercado Pago
+- Tener conocimientos básicos de PHP y desarrollo web
+- Tener conocimientos básicos de Git para clonar el repositorio
+- Tener conocimientos básicos de Composer para manejar dependencias
+- Tener conocimientos básicos de APIs REST y webhooks
+- Tener conocimientos básicos de HTML y CSS para entender la interfaz de usuario
+- Tener conocimientos básicos de seguridad web para proteger las credenciales y datos sensibles
+- Tener conocimientos básicos de testing y debugging para probar la integración
+- Tener conocimientos básicos de la plataforma de Mercado Pago y su documentación
+
 ### 1. Clonar el repositorio
 
 ```bash
@@ -37,20 +57,14 @@ composer install
 
 ### 3. Configurar credenciales
 
-Copia el archivo de ejemplo y edita con tus credenciales:
+Crea o edtia el archivo .env con variables de entorno.
+Las claves debe estar cifradas con openssl cipher
 
 ```bash
-cp config.example.php config.php
-```
-
-Edita `config.php` y agrega tu Access Token de Mercado Pago:
-
-```php
-return [
-    'access_token' => 'TU_ACCESS_TOKEN_AQUI',
-    'base_url' => 'http://localhost:8000',
-    'notification_url' => 'http://localhost:8000/webhook.php',
-];
+KEY
+ACCESS_TOKEN
+BASE_URL
+NOTIFICATION_URL
 ```
 
 ### 4. Obtener credenciales de Mercado Pago
@@ -78,6 +92,9 @@ Configura tu servidor web para servir la aplicación desde el directorio raíz d
 
 ```
 CheckoutPro/
+├── class/              # Clases PHP
+├── utiles/             # Utilidades y helpers
+├── vendor/             # Dependencias de Composer
 ├── index.php           # Página principal - Crear preferencias
 ├── success.php         # Página de pago exitoso
 ├── failure.php         # Página de pago fallido
@@ -87,8 +104,10 @@ CheckoutPro/
 ├── config.example.php  # Plantilla de configuración
 ├── composer.json       # Dependencias del proyecto
 ├── webhook.log         # Log de notificaciones (generado automáticamente)
-├── .gitignore         # Archivos ignorados por git
-└── README.md          # Este archivo
+├── .gitignore          # Archivos ignorados por git
+├── .env                # Variables de entorno (no incluido en git)
+├── autoload.php        # Autocargador personalziado
+└── README.md           # Este archivo
 ```
 
 ## 🔄 Flujo de la Aplicación
