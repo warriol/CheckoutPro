@@ -22,120 +22,10 @@ MercadoPagoConfig::setAccessToken($config['access_token']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conección con Mercado Pago API REST usando SDK oficial PHP. Certificación Dev Program - Checkout Pro">
+    <meta name="author" content="wilson arriola">
     <title>Checkout Pro - Mercado Pago</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            padding: 40px;
-            max-width: 500px;
-            width: 100%;
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 28px;
-        }
-        .subtitle {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-        .product {
-            border: 2px solid #f0f0f0;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            background: #fafafa;
-        }
-        .product h2 {
-            color: #333;
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-        .product p {
-            color: #666;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-        .price {
-            color: #009ee3;
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .quantity {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .quantity label {
-            color: #666;
-            font-weight: 500;
-        }
-        .quantity input {
-            width: 60px;
-            padding: 8px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            text-align: center;
-        }
-        .btn {
-            background: #009ee3;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s;
-        }
-        .btn:hover {
-            background: #007bb5;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0,158,227,0.4);
-        }
-        .btn:active {
-            transform: translateY(0);
-        }
-        .error {
-            background: #fee;
-            color: #c33;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            border-left: 4px solid #c33;
-        }
-        .footer {
-            margin-top: 30px;
-            text-align: center;
-            color: #999;
-            font-size: 12px;
-        }
-        .mp-logo {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="./utiles/css/styles.css">
 </head>
 <body>
     <div class="container">
@@ -169,7 +59,7 @@ MercadoPagoConfig::setAccessToken($config['access_token']);
                             'description' => 'Producto de prueba para certificación Checkout Pro',
                             'quantity' => $quantity,
                             'unit_price' => 100.00,
-                            'currency_id' => 'ARS',
+                            'currency_id' => 'UYP',
                         ]
                     ],
                     'back_urls' => [
@@ -182,7 +72,7 @@ MercadoPagoConfig::setAccessToken($config['access_token']);
                     'statement_descriptor' => 'CHECKOUTPRO',
                     'external_reference' => 'REF-' . time(),
                 ]);
-
+                // Obtener el identificador de la preferencia
                 $preference_id = $preference->id;
 
             } catch (MPApiException $e) {
@@ -209,7 +99,7 @@ MercadoPagoConfig::setAccessToken($config['access_token']);
             <script src="https://sdk.mercadopago.com/js/v2"></script>
             <script>
                 const mp = new MercadoPago('<?php echo $config['access_token']; ?>', {
-                    locale: 'es-AR'
+                    locale: 'es-UY'
                 });
                 
                 mp.checkout({
@@ -226,7 +116,7 @@ MercadoPagoConfig::setAccessToken($config['access_token']);
                 <div class="product">
                     <h2>Producto Demo</h2>
                     <p>Producto de prueba para certificación Checkout Pro de Mercado Pago</p>
-                    <div class="price">$ 100.00 <span style="font-size: 16px; color: #666;">ARS</span></div>
+                    <div class="price">$ 100.00 <span style="font-size: 16px; color: #666;">UYP</span></div>
                     
                     <div class="quantity">
                         <label for="quantity">Cantidad:</label>
